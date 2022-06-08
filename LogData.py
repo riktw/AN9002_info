@@ -30,16 +30,16 @@ def notification_handler(sender, data):
     if multimeter.overloadFlag:
         displayedData = 99999
         print("Overload")
-    
+
     unit = multimeter.GetDisplayedUnit()
     if lastDisplayedUnit == "":
         lastDisplayedUnit = unit
-    
+
     if unit != lastDisplayedUnit:
         lastDisplayedUnit = unit
         dataGraph.clear()
         plt.clf()
-    
+
     dataGraph.append(displayedData)
     plt.ylabel(unit)
     print(str(displayedData) + " " + unit) 
@@ -61,7 +61,7 @@ async def run(address):
                 plt.draw()
                 plt.pause(0.1)
                 await asyncio.sleep(0.5)       
-            
+
     except Exception as e:
         print(e)
     finally:
@@ -73,8 +73,7 @@ if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     loop.set_debug(False)
     loop.run_until_complete(run(ADDRESS))
-    
+
     with open('plot.csv', 'w') as f:
         wr = csv.writer(f)
         wr.writerow(dataGraph)
-    
