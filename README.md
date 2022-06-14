@@ -7,8 +7,11 @@ This has just been tested on 1 multimeter. You might need to change the address 
 
 To run, the keyboard and bleak libraries need to be installed using:
 
+
 pip install keyboard
+
 pip install bleak
+
 
 This script needs to be run as root on Linux due to the keyboard library.
 
